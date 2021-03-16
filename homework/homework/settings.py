@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+from log.models import CustomUser
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '%_zy42txona*o1jwq+pv-_b=bv==xr=!y5x%5-d=7!37k_11j*'
+SECRET_KEY = '11fffffffffffdsgfdgvcxzv11'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'log',
+    'auk',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -116,5 +120,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
-
+AUTH_USER_MODEL = 'CustomUser'
 STATIC_URL = '/static/'
+
+EMAIL_HOST = "smtp.rambler.ru"
+EMAIL_PORT = "465"
+EMAIL_HOST_USER = "site16032021@rambler.ru"
+EMAIL_HOST_PASSWORD = "qhUcflu123"

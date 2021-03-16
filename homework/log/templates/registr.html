@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+
+    <title>Регитрация</title>
+</head>
+<body>
+    <div class="wrapper" style="width: 80vw; margin-left: 10%;">
+        <div class="mb-3">
+            <label for="email" class="form-label">Введите свой Email</label>
+            <input type="email" class="form-control" id="email" placeholder="name@example.com">
+            <label for="username" class="form-label">Введите своё имя пользователя</label>
+            <input type="text" class="form-control" id="username" placeholder="nickname">
+            <label for="password" class="form-label">Придумайте пароль</label>
+            <input type="password" class="form-control" id="password" placeholder="password">
+            <label for="confirm_pass" class="form-label">Подтвердите пароль</label>
+            <input type="password" class="form-control" id="confirm_pass" placeholder="password">
+            <button type="button" class="btn btn-success" style="margin-top: 10px;" onclick="send()">Success</button>
+        </div>
+    </div>
+
+    <script>
+        function send(){
+            var email = document.getElementById('email').value;
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            var confirm_pass = document.getElementById('confirm_pass').value;
+            if (email!="" && username!="" && password!="" && confirm_pass!=""){
+                if (password===confirm_pass){
+                    var data = JSON.stringify({"email":email, 
+                                "username":username,
+                                "password":password});
+                    console.log(data)
+                    var socet = new XMLHttpRequest();
+                    socet.open("POST", 'user/registr', true)
+                    socet.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+                    alert('send');
+                }
+                else {alert("passwords not match")}
+            }
+            else{alert("not all fields was writen")}
+        }
+    </script>
+</body>
+</html>
